@@ -1,8 +1,9 @@
 import notificationActions from './NotificationActions';
 import Constants from '../../helpers/Constants';
 import userService from '../../helpers/Services';
+import history from '../../helpers/History';
 
-const login = (username, password) => {
+const login = (username, password, from) => {
   const request = (user) => ({ type: Constants.LOGIN_REQUEST, user });
   const success = (user) => ({ type: Constants.LOGIN_SUCCESS, user });
   const failure = (error) => ({ type: Constants.LOGIN_FAILURE, error });
@@ -14,6 +15,7 @@ const login = (username, password) => {
       .then(
         (user) => {
           dispatch(success(user));
+          history.push(from);
         },
         (error) => {
           dispatch(failure(error.toString()));
