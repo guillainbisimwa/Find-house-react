@@ -1,5 +1,5 @@
-const Main = () => (
-  <div>Main</div>
+const Header = () => (
+  <div>Header</div>
 );
 
-export default Main;
+export default Header;

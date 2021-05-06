@@ -1,7 +1,7 @@
 const App = () => (
-    <div className="App">
+  <div className="App">
     App
-    </div>
+  </div>
 );
 
 export default App;
