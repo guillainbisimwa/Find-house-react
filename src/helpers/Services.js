@@ -50,8 +50,35 @@ const logout = () => {
     });
 };
 
-const register = () => {
+const register = (user) => {
+  const options = {
+    method: 'POST',
+    url: 'https://find-your-house-backend.herokuapp.com/auth/login',
+    params: {},
+    headers: {
+      'content-type': 'application/json',
+    },
+    data: {
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      password_confirmation: user.password_confirmation,
+    },
+  };
 
+  axios
+    .request(options)
+    .then((response) => {
+      const user = response.data;
+      user.username = user.name;
+
+      localStorage.setItem('user', JSON.stringify(user));
+
+      return user;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 export const userService = {
