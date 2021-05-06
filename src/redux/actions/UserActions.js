@@ -2,10 +2,10 @@ import notificationActions from './NotificationActions';
 import Constants from '../../helpers/Constants';
 import userService from '../../helpers/Services';
 
-function login(username, password) {
-  function request(user) { return { type: Constants.LOGIN_REQUEST, user }; }
-  function success(user) { return { type: Constants.LOGIN_SUCCESS, user }; }
-  function failure(error) { return { type: Constants.LOGIN_FAILURE, error }; }
+const login = (username, password) => {
+  const request = (user) => ({ type: Constants.LOGIN_REQUEST, user });
+  const success = (user) => ({ type: Constants.LOGIN_SUCCESS, user });
+  const failure = (error) => ({ type: Constants.LOGIN_FAILURE, error });
 
   return (dispatch) => {
     dispatch(request({ username }));
@@ -21,17 +21,17 @@ function login(username, password) {
         },
       );
   };
-}
+};
 
-function logout() {
+const logout = () => {
   userService.logout();
   return { type: Constants.LOGOUT };
-}
+};
 
-function register(user) {
-  function request(user) { return { type: Constants.REGISTER_REQUEST, user }; }
-  function success(user) { return { type: Constants.REGISTER_SUCCESS, user }; }
-  function failure(error) { return { type: Constants.REGISTER_FAILURE, error }; }
+const register = (user) => {
+  const request = (user) => ({ type: Constants.REGISTER_REQUEST, user });
+  const success = (user) => ({ type: Constants.REGISTER_SUCCESS, user });
+  const failure = (error) => ({ type: Constants.REGISTER_FAILURE, error });
 
   return (dispatch) => {
     dispatch(request(user));
@@ -48,7 +48,7 @@ function register(user) {
         },
       );
   };
-}
+};
 
 const userActions = {
   login,
