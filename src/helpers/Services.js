@@ -81,7 +81,7 @@ const register = (user) => {
     });
 };
 
-export const userService = {
+const userService = {
   login,
   logout,
   register,

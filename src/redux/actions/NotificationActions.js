@@ -1,4 +1,4 @@
-import Constants from '../Constants';
+import Constants from '../../helpers/Constants';
 
 const success = (message) => ({ type: Constants.SUCCESS, message });
 
