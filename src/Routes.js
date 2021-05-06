@@ -11,7 +11,7 @@ import Login from './screens/Login';
 import Signup from './screens/Signup';
 
 const Routes = () => {
-  const alert = useSelector((state) => state.alert);
+  const alert = useSelector(state => state.alert);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,20 +23,20 @@ const Routes = () => {
   }, []);
 
   return (
-    <>
-    {
-      alert
+    <div>
+      {
+        alert
         && <div className={`alert ${alert.type}`}>{alert}</div>
-    }
-    <Router history={history}>
-      <Switch>
+      }
+      <Router history={history}>
+        <Switch>
           <PrivateRoute exact path="/" component={App} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Signup} />
           <Redirect from="*" to="/" />
-      </Switch>
-    </Router>
-    </>
+        </Switch>
+      </Router>
+    </div>
   );
 };
 export default Routes;
