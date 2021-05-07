@@ -6,7 +6,7 @@ import userActions from '../redux/actions/UserActions';
 
 const Login = () => {
   const [inputs, setInputs] = useState({
-    name: 'guy@me.com',
+    name: 'gu@me.com',
     password: '12345',
   });
   const [submitted, setSubmitted] = useState(false);

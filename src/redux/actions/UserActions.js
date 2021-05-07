@@ -11,11 +11,14 @@ const login = (name, password, from = '/') => {
     dispatch(request({ name }));
     userService.login(name, password).then(
       async (user) => {
-        console.log(user);
-        await dispatch(success({ name, password }));
-        history.push(from);
-
-        dispatch(notificationActions.success('Login successful'));
+        if (user.status !== undefined && user.status !== 200) {
+          dispatch(failure(user.data.message));
+          dispatch(notificationActions.error(user.data.message));
+        } else {
+          dispatch(success(user));
+          history.push(from);
+          dispatch(notificationActions.success('Login successful'));
+        }
       },
       (error) => {
         dispatch(failure(error.toString()));
@@ -41,11 +44,18 @@ const register = (user) => {
     userService.register(user)
       .then(
         async (user) => {
-          dispatch(success());
-          history.push('/');
-          console.log('user ------ +++++ ');
-          console.log(user);
-          dispatch(notificationActions.success('Registration successful'));
+          if (user.status !== undefined && user.status !== 200) {
+            dispatch(failure(user.data.message));
+            dispatch(notificationActions.error(user.data.message));
+            if (user.status === 500) {
+              dispatch(failure('This email is already in use'));
+              dispatch(notificationActions.error('This email is already in use'));
+            }
+          } else {
+            dispatch(success(user));
+            history.push('/');
+            dispatch(notificationActions.success(user.message));
+          }
         },
         (error) => {
           dispatch(failure(error.toString()));
