@@ -1,23 +1,18 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-const PrivateRoute = ({ component: Component, roles, ...rest }) => (
-  <Route {...rest} render={(props) => {
+const PrivateRoute = (RouteProps) => {
+  const { component: Component, ...rest } = RouteProps;
+
+  const render = (props) => {
     if (!localStorage.getItem('user')) {
-      // not logged in so redirect to login page with the return url
-      return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />;
+      return <Redirect to='/login' />;
     }
 
-    // logged in so return component
     return <Component {...props} />;
-  }} />
-);
+  };
 
-PrivateRoute.propTypes = {
-  component: PropTypes.func,
-  roles: PropTypes.func,
-  location: PropTypes.object,
+  return <Route {...rest} render={render} />;
 };
 
 export default PrivateRoute;

@@ -3,19 +3,19 @@ import Constants from '../../helpers/Constants';
 import userService from '../../helpers/Services';
 import history from '../../helpers/History';
 
-const login = (name, password, from) => {
+const login = (name, password, from = '/') => {
   const request = user => ({ type: Constants.LOGIN_REQUEST, user });
   const success = user => ({ type: Constants.LOGIN_SUCCESS, user });
   const failure = error => ({ type: Constants.LOGIN_FAILURE, error });
-  console.log('from');
-  console.log(from);
   return (dispatch) => {
     dispatch(request({ name }));
-
     userService.login(name, password).then(
-      (user) => {
-        dispatch(success(user));
+      async (user) => {
+        console.log(user);
+        await dispatch(success({ name, password }));
         history.push(from);
+
+        dispatch(notificationActions.success('Login successful'));
       },
       (error) => {
         dispatch(failure(error.toString()));

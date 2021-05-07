@@ -12,12 +12,15 @@ const login = async (name, password) => {
       password,
     },
   };
+  let user = {};
 
-  axios.request(options)
-    .then((response) => {
-      const user = response.data;
+  await axios.request(options)
+    .then(async (response) => {
+      user = await response.data;
       user.name = name;
       localStorage.setItem('user', JSON.stringify(user));
+      // console.log('ferari');
+      // console.log(user);
 
       return user;
     })
