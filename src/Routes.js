@@ -15,8 +15,9 @@ const Routes = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    history.listen((location, action) => {
+    history.listen(({ action, location }) => {
       // clear alert on location change
+      console.log('change');
       console.log(location, action);
       dispatch(notificationActions.clear());
     });

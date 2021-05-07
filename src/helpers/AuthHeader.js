@@ -2,8 +2,9 @@ const authHeader = () => {
   // return authorization header with jwt token
   const user = JSON.parse(localStorage.getItem('user'));
 
-  if (user && user.token) {
-    return { Authorization: `Bearer ${user.auth_token}` };
+  if (user && user.auth_token) {
+    const header = { authorization: `${user.auth_token}` };
+    return header;
   }
   return {};
 };

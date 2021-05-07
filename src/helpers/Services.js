@@ -1,26 +1,22 @@
 import axios from 'axios';
 import authHeader from './AuthHeader';
 
-const login = (username, password) => {
+const login = async (name, password) => {
   const options = {
     method: 'POST',
     url: 'https://find-your-house-backend.herokuapp.com/auth/login',
     params: {},
-    headers: {
-      'content-type': 'application/json',
-    },
+    headers: {},
     data: {
-      email: username,
+      email: name,
       password,
     },
   };
 
-  axios
-    .request(options)
+  axios.request(options)
     .then((response) => {
       const user = response.data;
-      user.username = username;
-
+      user.name = name;
       localStorage.setItem('user', JSON.stringify(user));
 
       return user;
@@ -30,15 +26,13 @@ const login = (username, password) => {
     });
 };
 
-const logout = () => {
+const logout = async () => {
   const options = {
     method: 'DELETE',
     url: 'https://find-your-house-backend.herokuapp.com/users/sign_out',
     headers: authHeader(),
   };
-
-  axios
-    .request(options)
+  axios.request(options)
     .then((response) => {
       console.log(response.data);
 
@@ -69,10 +63,10 @@ const register = (user) => {
   axios
     .request(options)
     .then((response) => {
-      const user = response.data;
-      user.username = user.name;
+      const loggedUser = response.data;
+      loggedUser.name = user.name;
 
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(loggedUser));
 
       return user;
     })
