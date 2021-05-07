@@ -40,9 +40,10 @@ const register = (user) => {
 
     userService.register(user)
       .then(
-        (user) => {
+        async (user) => {
           dispatch(success());
-          history.push('/login');
+          history.push('/');
+          console.log('user ------ +++++ ');
           console.log(user);
           dispatch(notificationActions.success('Registration successful'));
         },
@@ -52,32 +53,6 @@ const register = (user) => {
         },
       );
   };
-
-  // return (dispatch) => {
-  //   dispatch(request(user));
-
-  //   userService.register(user)
-  //     .then(
-  //       (response) => {
-  //         console.log(response);
-  //         // dispatch(success(response.user));
-  //       },
-  //       (error) => {
-  //         dispatch(failure(error.toString()));
-  //         dispatch(notificationActions.error(error.toString()));
-  //       },
-  //     );
-  //   // .then(
-  //   //   () => {
-  //   //     dispatch(success());
-  //   //     dispatch(notificationActions.success('Registration successful'));
-  //   //   },
-  //   //   (error) => {
-  //   //     dispatch(failure(error.toString()));
-  //   //     dispatch(notificationActions.error(error.toString()));
-  //   //   },
-  //   // );
-  // };
 };
 
 const userActions = {

@@ -19,8 +19,6 @@ const login = async (name, password) => {
       user = await response.data;
       user.name = name;
       localStorage.setItem('user', JSON.stringify(user));
-      // console.log('ferari');
-      // console.log(user);
 
       return user;
     })
@@ -47,14 +45,12 @@ const logout = async () => {
     });
 };
 
-const register = (user) => {
+const register = async (user) => {
   const options = {
     method: 'POST',
-    url: 'https://find-your-house-backend.herokuapp.com/auth/login',
+    url: 'https://find-your-house-backend.herokuapp.com/signup',
     params: {},
-    headers: {
-      'content-type': 'application/json',
-    },
+    headers: { },
     data: {
       name: user.name,
       email: user.email,
@@ -67,11 +63,10 @@ const register = (user) => {
     .request(options)
     .then((response) => {
       const loggedUser = response.data;
-      loggedUser.name = user.name;
+      loggedUser.name = user.email;
 
       localStorage.setItem('user', JSON.stringify(loggedUser));
-
-      return user;
+      return loggedUser;
     })
     .catch((error) => {
       console.error(error);
