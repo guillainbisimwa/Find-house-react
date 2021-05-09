@@ -44,13 +44,12 @@ const register = (user) => {
     userService.register(user)
       .then(
         async (user) => {
-          if (user.status !== undefined && user.status !== 200) {
+          if (user.status !== undefined && user.status === 500) {
+            dispatch(failure('This email is already in use'));
+            dispatch(notificationActions.error('This email is already in use'));
+          } else if (user.status !== undefined && user.status !== 200 && user.status !== 500) {
             dispatch(failure(user.data.message));
             dispatch(notificationActions.error(user.data.message));
-            if (user.status === 500) {
-              dispatch(failure('This email is already in use'));
-              dispatch(notificationActions.error('This email is already in use'));
-            }
           } else {
             dispatch(success(user));
             history.push('/');
