@@ -14,6 +14,18 @@ const favorite = (state = {}, action) => {
       return {
         error: action.error,
       };
+    case Constants.ADDTOFAVORITES_REQUEST:
+      return {
+        loading: true,
+      };
+    case Constants.ADDTOFAVORITES_SUCCESS:
+      return {
+        favorites: action.favorite,
+      };
+    case Constants.ADDTOFAVORITES_FAILURE:
+      return {
+        error: action.error,
+      };
     default:
       return state;
   }
