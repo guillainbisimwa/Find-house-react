@@ -8,6 +8,7 @@ import history from './helpers/History';
 import App from './screens/App';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
+import Details from './screens/Details';
 
 const MyRoutes = () => {
   const alert = useSelector(state => state.alert);
@@ -32,6 +33,7 @@ const MyRoutes = () => {
           <PublicRoute restricted component={Signup} path="/register" exact />
           <PublicRoute restricted component={Login} path="/login" exact />
           <PrivateRoute component={App} path="/" exact />
+          <PrivateRoute component={Details} path="/details/:id" exact />
           <Redirect from="*" to="/" />
         </Switch>
       </BrowserRouter>

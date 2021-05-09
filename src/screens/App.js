@@ -30,17 +30,18 @@ const App = () => {
         <p>You are logged in with React Hooks!!</p>
         {houses.loading && <em>Loading houses...</em>}
         {houses.error && <span className="text-danger">ERROR: {houses.error}</span>}
-        {houses.houses && <em>All houses...</em>}
         {houses.houses &&
-                <ul>
-                  {houses.houses.map(house =>
-                    <li key={house.id}>
-                      {`${house.about} - `}
-                      {`${house.owner}`}
-                      <img src={house.picture} alt={house.owner} width='300' />
-                    </li>,
-                  )}
-                </ul>
+          <ul>
+            {houses.houses.map(house =>
+              <li key={house.id}>
+                <Link to={`/details/${house.id}`}>
+                  {`${house.about} - `}
+                  {`${house.owner}`}
+                  <img src={house.picture} alt={house.owner} width='300' />
+                </Link>
+              </li>,
+            )}
+          </ul>
         }
         <p>
           <Link to="/login" onClick={logOut}>Logout</Link>
