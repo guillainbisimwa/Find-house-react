@@ -8,7 +8,7 @@ const favorite = (state = {}, action) => {
       };
     case Constants.GETALLFAVORITES_SUCCESS:
       return {
-        favorites: action.favorite,
+        favorites: action.house,
       };
     case Constants.GETALLFAVORITES_FAILURE:
       return {

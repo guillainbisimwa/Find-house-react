@@ -9,6 +9,7 @@ import App from './screens/App';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Details from './screens/Details';
+import Favorites from './screens/Favorites';
 
 const MyRoutes = () => {
   const alert = useSelector(state => state.alert);
@@ -34,6 +35,7 @@ const MyRoutes = () => {
           <PublicRoute restricted component={Login} path="/login" exact />
           <PrivateRoute component={App} path="/" exact />
           <PrivateRoute component={Details} path="/details/:id" exact />
+          <PrivateRoute component={Favorites} path="/favorites" exact />
           <Redirect from="*" to="/" />
         </Switch>
       </BrowserRouter>

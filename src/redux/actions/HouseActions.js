@@ -19,7 +19,7 @@ const getAllHouses = () => {
   };
 };
 
-const getAllFavorites = () => {
+const getAllFavorites = (id) => {
   const request = house => ({ type: Constants.GETALLFAVORITES_REQUEST, house });
   const success = house => ({ type: Constants.GETALLFAVORITES_SUCCESS, house });
   const failure = error => ({ type: Constants.GETALLFAVORITES_FAILURE, error });
@@ -27,7 +27,7 @@ const getAllFavorites = () => {
   return (dispatch) => {
     dispatch(request());
 
-    userService.getAllFavorites()
+    userService.getAllFavorites(id)
       .then(
         (favorites) => {
           dispatch(success(favorites));
