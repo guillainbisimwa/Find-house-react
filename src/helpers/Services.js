@@ -65,10 +65,23 @@ const register = async (user) => {
     .catch(error => error.response);
 };
 
+function getAllHouses() {
+  const options = {
+    method: 'GET',
+    url: 'https://find-your-house-backend.herokuapp.com/houses',
+    headers: authHeader(),
+  };
+
+  return axios.request(options)
+    .then(response => response.data)
+    .catch(error => error.response);
+}
+
 const userService = {
   login,
   logout,
   register,
+  getAllHouses,
 };
 
 export default userService;
