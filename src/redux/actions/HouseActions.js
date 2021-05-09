@@ -19,8 +19,27 @@ const getAllHouses = () => {
   };
 };
 
+const getAllFavorites = () => {
+  const request = house => ({ type: Constants.GETALLFAVORITES_REQUEST, house });
+  const success = house => ({ type: Constants.GETALLFAVORITES_SUCCESS, house });
+  const failure = error => ({ type: Constants.GETALLFAVORITES_FAILURE, error });
+
+  return (dispatch) => {
+    dispatch(request());
+
+    userService.getAllFavorites()
+      .then(
+        (favorites) => {
+          dispatch(success(favorites));
+        },
+        error => dispatch(failure(error.toString())),
+      );
+  };
+};
+
 const houseActions = {
   getAllHouses,
+  getAllFavorites,
 };
 
 export default houseActions;
