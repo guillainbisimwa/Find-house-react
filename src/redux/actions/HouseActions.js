@@ -37,9 +37,28 @@ const getAllFavorites = () => {
   };
 };
 
+const addToFavorites = () => {
+  const request = house => ({ type: Constants.ADDTOFAVORITES_REQUEST, house });
+  const success = house => ({ type: Constants.ADDTOFAVORITES_SUCCESS, house });
+  const failure = error => ({ type: Constants.ADDTOFAVORITES_FAILURE, error });
+
+  return (dispatch) => {
+    dispatch(request());
+
+    userService.addToFavorites()
+      .then(
+        (favorites) => {
+          dispatch(success(favorites));
+        },
+        error => dispatch(failure(error.toString())),
+      );
+  };
+};
+
 const houseActions = {
   getAllHouses,
   getAllFavorites,
+  addToFavorites,
 };
 
 export default houseActions;

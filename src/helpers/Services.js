@@ -91,7 +91,7 @@ const getAllFavorites = async (user) => {
 
 const addToFavorites = async (user, houseId) => {
   const options = {
-    method: 'GET',
+    method: 'POST',
     url: `https://find-your-house-backend.herokuapp.com/users/${user}/favourites`,
     headers: authHeader(),
     data: {
