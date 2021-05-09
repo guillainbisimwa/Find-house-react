@@ -11,7 +11,9 @@ const getAllHouses = () => {
 
     userService.getAllHouses()
       .then(
-        houses => dispatch(success(houses)),
+        (houses) => {
+          dispatch(success(houses));
+        },
         error => dispatch(failure(error.toString())),
       );
   };

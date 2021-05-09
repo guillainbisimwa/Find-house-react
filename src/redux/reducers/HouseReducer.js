@@ -8,7 +8,7 @@ const house = (state = {}, action) => {
       };
     case Constants.GETALLHOUSES_SUCCESS:
       return {
-        houses: action,
+        houses: action.house,
       };
     case Constants.GETALLHOUSES_FAILURE:
       return {
