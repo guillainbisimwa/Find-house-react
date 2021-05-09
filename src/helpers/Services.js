@@ -77,11 +77,24 @@ const getAllHouses = async () => {
     .catch(error => error.response);
 };
 
+const getAllFavorites = async (user) => {
+  const options = {
+    method: 'GET',
+    url: `https://find-your-house-backend.herokuapp.com/users/${user}/favourites`,
+    headers: authHeader(),
+  };
+
+  return axios.request(options)
+    .then(response => response.data)
+    .catch(error => error.response);
+};
+
 const userService = {
   login,
   logout,
   register,
   getAllHouses,
+  getAllFavorites,
 };
 
 export default userService;
