@@ -6,18 +6,15 @@ import userActions from '../redux/actions/UserActions';
 
 const Signup = () => {
   const [user, setUser] = useState({
-    name: 'guy1',
-    email: 'guy1@me.com',
-    password: '12345',
-    password_confirmation: '12345',
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
   });
   const [submitted, setSubmitted] = useState(false);
   // const registering = useSelector(state => state.registration.registering);
   const registering = useSelector(state => state.registrationReducer.registering);
-  console.log('registr');
-  console.log(registering);
   const dispatch = useDispatch();
-  console.log();
 
   // reset login status
   // useEffect(() => {
@@ -43,32 +40,32 @@ const Signup = () => {
       <div className='bg-white bg-opacity-90  h-screen flex p-0 m-0'>
         <form name="form" onSubmit={handleSubmit} className='my-auto mx-auto px-5 sm:px-8 py-8 w-full sm:w-3/4 lg:w-2/4 xl:w-auto'>
           <h3 className="intro-x font-bold text-2xl xl:text-3xl text-center p-2">Registration</h3>
-          <div className="form-group">
+          <div className="form-group mt-3">
             <label>Name</label>
-            <input type="text" name="name" value={user.name} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full form-control${submitted && !user.name ? ' is-invalid' : ''}`} />
+            <input type="text" name="name" value={user.name} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full form-control ${submitted && !user.name ? 'border-primary' : ''}`} />
             {submitted && !user.name &&
-                        <div className="invalid-feedback">Name is required</div>
+                        <div className="text-primary">Name is required</div>
             }
           </div>
-          <div className="form-group">
+          <div className="form-group mt-3">
             <label>Email</label>
-            <input type="text" name="email" value={user.email} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full form-control${submitted && !user.email ? ' is-invalid' : ''}`} />
+            <input type="text" name="email" value={user.email} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.email ? 'border-primary' : ''}`} />
             {submitted && !user.email &&
-                        <div className="invalid-feedback">Email is required</div>
+                        <div className="text-primary">Email is required</div>
             }
           </div>
-          <div className="form-group">
-            <label>password</label>
-            <input type="password" name="password" value={user.password} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full form-control${submitted && !user.password ? ' is-invalid' : ''}`} />
+          <div className="form-group mt-3">
+            <label>Password</label>
+            <input type="password" name="password" value={user.password} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.password ? 'border-primary' : ''}`} />
             {submitted && !user.password &&
-                        <div className="invalid-feedback">password is required</div>
+                        <div className="text-primary">password is required</div>
             }
           </div>
-          <div className="form-group">
-            <label>password_confirmation</label>
-            <input type="password" name="password_confirmation" value={user.password_confirmation} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full form-control${submitted && !user.password_confirmation ? ' is-invalid' : ''}`} />
+          <div className="form-group mt-3">
+            <label>Password_confirmation</label>
+            <input type="password" name="password_confirmation" value={user.password_confirmation} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.password_confirmation ? 'border-primary' : ''}`} />
             {submitted && !user.password_confirmation &&
-                        <div className="invalid-feedback">password_confirmation is required</div>
+                        <div className="text-primary">password confirmation is required</div>
             }
           </div>
           <div className="flex justify-center">

@@ -10,6 +10,15 @@ module.exports = {
         ...theme('colors'),
         primary: '#ec5200',
       }),
+      colors: {
+        primary: '#ec5200',
+      },
+      borderColor: theme => ({
+        ...theme('colors'),
+        DEFAULT: theme('colors.gray.300', 'currentColor'),
+        primary: '#ec5200',
+        danger: '#e3342f',
+      }),
     },
   },
   variants: {

@@ -33,7 +33,6 @@ const Login = () => {
       // get return url from location state or default to home page
       const { from } = location.state || { from: { pathname: '/' } };
       dispatch(userActions.login(name, password, from));
-      console.log(submitted);
     }
   };
 
@@ -44,8 +43,14 @@ const Login = () => {
           <h3 className="intro-x font-bold text-2xl xl:text-3xl text-center p-2">Sign in</h3>
           <div className="intro-x mt-2 mb-5 text-gray-500 text-center">Hello there! Sign in and start managing your system</div>
           <div className='intro-x mt-8'>
-            <input name="name" value={name} onChange={handleChange} type="email" className="bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full" placeholder="Enter your email"/>
-            <input type="password" name="password" value={password} onChange={handleChange} className="bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full" placeholder="Enter your password"></input>
+            <input name="name" value={name} onChange={handleChange} type="email" className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !name ? 'border-primary' : ''}`} placeholder="Enter your email"/>
+            {submitted && !name &&
+                        <div className="text-primary">Email is required</div>
+            }
+            <input type="password" name="password" value={password} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full mt-3 ${submitted && !password ? 'border-primary' : ''}`} placeholder="Enter your password"></input>
+            {submitted && !password &&
+                        <div className="text-primary">Password is required</div>
+            }
           </div>
           <div className='flex justify-center'>
             <button className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded-full shadow-2xl focus:outline-none">
