@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import houseActions from '../redux/actions/HouseActions';
 
-
 const Favorites = () => {
   const dispatch = useDispatch();
 
@@ -13,11 +12,8 @@ const Favorites = () => {
   let myFavorites = [];
 
   if (houses.houses !== undefined && favorites.favorites !== undefined) {
-    console.log('favorites');
-
     myFavorites = houses.houses.filter(elm1 => favorites.favorites.map(elm =>
       JSON.stringify(elm.house_id)).includes(JSON.stringify(elm1.id)));
-    // console.log(myFavorites[0]);
   }
 
   useEffect(() => {

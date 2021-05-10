@@ -13,13 +13,37 @@ const App = () => {
 
   const user = useSelector(state => state.authenticationReducer.user);
   const houses = useSelector(state => state.houseReducer);
+  const favorites = useSelector(state => state.favoriteReducer);
+  const userLogged = JSON.parse(localStorage.getItem('user'));
+
+  let myFavorites = [];
+
+  if (houses.houses !== undefined && favorites.favorites !== undefined) {
+    myFavorites = houses.houses.filter(elm1 => favorites.favorites.map(elm =>
+      JSON.stringify(elm.house_id)).includes(JSON.stringify(elm1.id)));
+  }
 
   useEffect(() => {
     dispatch(houseActions.getAllHouses());
   }, []);
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    dispatch(houseActions.getAllFavorites(user.id));
+  }, []);
+
   const logOut = () => {
     dispatch(userActions.logout());
+  };
+
+  const addToFavorites = (houseId, e) => {
+    e.preventDefault();
+    dispatch(houseActions.addToFavorites(userLogged.id, houseId));
+  };
+
+  const checkIfFavorite = (id) => {
+    const found = myFavorites.some(item => item.id === id);
+    return found;
   };
 
   return (
@@ -39,6 +63,10 @@ const App = () => {
                   {`${house.owner}`}
                   <img src={house.picture} alt={house.owner} width='300' />
                 </Link>
+                {!checkIfFavorite(house.id) ?
+                  <Link to={`users/${userLogged.id}/favorites`} onClick={e => addToFavorites(house.id, e)} >Add to favorites</Link>
+                  : <span>Favorite</span>
+                }
               </li>,
             )}
           </ul>

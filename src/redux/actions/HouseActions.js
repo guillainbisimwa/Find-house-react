@@ -37,7 +37,7 @@ const getAllFavorites = (id) => {
   };
 };
 
-const addToFavorites = () => {
+const addToFavorites = (userId, houseId) => {
   const request = house => ({ type: Constants.ADDTOFAVORITES_REQUEST, house });
   const success = house => ({ type: Constants.ADDTOFAVORITES_SUCCESS, house });
   const failure = error => ({ type: Constants.ADDTOFAVORITES_FAILURE, error });
@@ -45,7 +45,7 @@ const addToFavorites = () => {
   return (dispatch) => {
     dispatch(request());
 
-    userService.addToFavorites()
+    userService.addToFavorites(userId, houseId)
       .then(
         (favorites) => {
           dispatch(success(favorites));
