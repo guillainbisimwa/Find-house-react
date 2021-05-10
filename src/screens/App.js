@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Main from '../components/Main';
 import houseActions from '../redux/actions/HouseActions';
@@ -32,7 +31,6 @@ const App = () => {
     <div>
       <Header user={userLogged} />
       <Main userLogged={userLogged} houses={houses} myFavorites={myFavorites} />
-      <Footer />
     </div>
   );
 };
