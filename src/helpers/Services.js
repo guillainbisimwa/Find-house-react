@@ -1,5 +1,6 @@
 import axios from 'axios';
 import authHeader from './AuthHeader';
+import history from './History';
 
 const login = async (name, password) => {
   const options = {
@@ -35,6 +36,8 @@ const logout = async () => {
     .then((response) => {
       // remove user from local storage to log user out
       localStorage.removeItem('user');
+      history.push('/login');
+
       return response;
     })
     .catch(error => error.response);

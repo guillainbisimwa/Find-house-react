@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaUserNinja, FaPlayCircle } from 'react-icons/fa';
 import userActions from '../redux/actions/UserActions';
+import history from '../helpers/History';
 
 
 const Header = ({ user }) => {
   const dispatch = useDispatch();
 
   const logOut = () => {
+    history.push('/login');
     dispatch(userActions.logout());
   };
 

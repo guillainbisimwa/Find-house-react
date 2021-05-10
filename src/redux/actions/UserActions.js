@@ -52,7 +52,12 @@ const register = (user) => {
             dispatch(notificationActions.error(user.data.message));
           } else {
             dispatch(success(user));
-            history.push('/');
+            const location = {
+              pathname: '/',
+              state: { fromLogin: true },
+            };
+
+            history.push(location);
             dispatch(notificationActions.success(user.message));
           }
         },
