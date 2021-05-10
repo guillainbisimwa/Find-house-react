@@ -21,11 +21,11 @@ const Header = ({ user }) => {
           <div className="mt-5 flex gap-4 md:mx-10 items-center">
             <FaUserNinja />
             <div>{user}</div>
-            <Link to="/login" onClick={logOut} className='bg-black bg-opacity-30 py-2 px-6 text-white font-semibold rounded-full shadow-2xl focus:outline-none'>Logout</Link>
+            <Link to="/login" onClick={logOut} className='bg-black bg-opacity-40 py-2 px-6 text-white font-semibold rounded-full shadow-2xl focus:outline-none'>Logout</Link>
           </div>
         </header>
-        <div className='pt-10 mt-10 w-2/4'>
-          <h3 className="intro-x font-bold text-white text-2xl xl:text-3xl text-left pb-2"> Find your house anywhere</h3>
+        <div className='pt-10 mt-10 w-4/4 sm:w-3/4 md:w-2/4 xl:w-2/4'>
+          <h2 className="intro-x font-bold text-white text-3xl xl:text-5xl text-left pb-2"> Find your house anywhere</h2>
           <p className=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam,</p>
