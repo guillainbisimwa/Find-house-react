@@ -53,6 +53,7 @@
     "@babel/eslint-parser": "^7.13.14",
     "@tailwindcss/postcss7-compat": "^2.1.0",
     "postcss": "^7.0.35",
+    "react-refresh": "^0.8.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "20.0.x",
     "stylelint-csstree-validator": "^1.9.0",
