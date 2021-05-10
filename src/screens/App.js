@@ -5,8 +5,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Main from '../components/Main';
 import houseActions from '../redux/actions/HouseActions';
-import userActions from '../redux/actions/UserActions';
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,10 +30,6 @@ const App = () => {
     dispatch(houseActions.getAllFavorites(user.id));
   }, []);
 
-  const logOut = () => {
-    dispatch(userActions.logout());
-  };
-
   const addToFavorites = (houseId, e) => {
     e.preventDefault();
     dispatch(houseActions.addToFavorites(userLogged.id, houseId));
@@ -48,7 +42,7 @@ const App = () => {
 
   return (
     <div>
-      <Header />
+      <Header user={userLogged.name} />
       <div className="col-lg-8 offset-lg-2">
         <h1>Hi {user.name}!</h1>
         <p>You are logged in with React Hooks!!</p>
@@ -72,7 +66,6 @@ const App = () => {
           </ul>
         }
         <p>
-          <Link to="/login" onClick={logOut}>Logout</Link>
         </p>
       </div>
       <Main />
