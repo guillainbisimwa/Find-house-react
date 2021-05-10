@@ -17,10 +17,13 @@ const Header = ({ user }) => {
     <div className='bg-login-bg'>
       <div className='bg-black bg-opacity-50 h-auto p-5 text-white'>
         <header className="flex mb-10 justify-between">
-          <img src='https://github.com/guillainbisimwa/Find-house-api-doc/raw/main/source/images/logo.png' width='150' />
+          <Link to='/'>
+            <img src='https://github.com/guillainbisimwa/Find-house-api-doc/raw/main/source/images/logo.png' width='150' />
+          </Link>
           <div className="mt-5 flex gap-4 md:mx-10 items-center">
             <FaUserNinja />
-            <div>{user}</div>
+            <Link to='/'>{user.name}</Link>
+            <Link to='/favorites'>My favorite</Link>
             <Link to="/login" onClick={logOut} className='bg-black bg-opacity-40 py-2 px-6 text-white font-semibold rounded-full shadow-2xl focus:outline-none'>Logout</Link>
           </div>
         </header>
@@ -45,7 +48,7 @@ const Header = ({ user }) => {
 };
 
 Header.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default Header;

@@ -1,5 +1,6 @@
 import Constants from '../../helpers/Constants';
 import userService from '../../helpers/Services';
+import history from '../../helpers/History';
 
 const getAllHouses = () => {
   const request = house => ({ type: Constants.GETALLHOUSES_REQUEST, house });
@@ -48,6 +49,7 @@ const addToFavorites = (userId, houseId) => {
     userService.addToFavorites(userId, houseId)
       .then(
         (favorites) => {
+          history.push('/favorites');
           dispatch(success(favorites));
         },
         error => dispatch(failure(error.toString())),

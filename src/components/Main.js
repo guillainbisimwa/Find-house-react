@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -36,11 +35,11 @@ const Main = ({ userLogged, houses, myFavorites }) => {
                   </div>
                 </Link>
                 <div className="p-5 text-gray-700 dark:text-gray-600">
-                Picture by {house.owner}.
+                Picture bys {house.owner}.
                   <span className="block truncate ...">{house.details}</span>
                 </div>
                 {!checkIfFavorite(house.id) ?
-                  <Link to={`users/${userLogged.id}/favorites`} onClick={e => addToFavorites(house.id, e)} className='bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none'>Add to favorites</Link>
+                  <Link to='/favorites' onClick={e => addToFavorites(house.id, e)} className='bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none'>Add to favorites</Link>
                   : <span className='bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block'>Added to favorite</span>
                 }
               </div>,

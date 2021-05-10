@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div>
-      <Header user={userLogged.name} />
+      <Header user={userLogged} />
       <Main userLogged={userLogged} houses={houses} myFavorites={myFavorites} />
       <Footer />
     </div>
