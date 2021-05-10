@@ -16,10 +16,9 @@ const MyRoutes = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     history.listen(({ action, location }) => {
       // clear alert on location
-      console.log('location');
-      console.log(location, action);
       dispatch(notificationActions.clear());
     });
   }, []);
