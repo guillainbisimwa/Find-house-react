@@ -47,9 +47,12 @@
     "maintained node versions"
   ],
   "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "20.0.x",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "3.17.x"
+    "stylelint-scss": "3.17.x",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
   }
 }
