@@ -42,28 +42,28 @@ const Signup = () => {
           <h3 className="intro-x font-bold text-2xl xl:text-3xl text-center p-2">Registration</h3>
           <div className="form-group mt-3">
             <label>Name</label>
-            <input type="text" name="name" value={user.name} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full form-control ${submitted && !user.name ? 'border-primary' : ''}`} />
+            <input placeholder='Name' type="text" name="name" value={user.name} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full form-control ${submitted && !user.name ? 'border-primary' : ''}`} />
             {submitted && !user.name &&
                         <div className="text-primary">Name is required</div>
             }
           </div>
           <div className="form-group mt-3">
             <label>Email</label>
-            <input type="text" name="email" value={user.email} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.email ? 'border-primary' : ''}`} />
+            <input placeholder='Email' type="text" name="email" value={user.email} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.email ? 'border-primary' : ''}`} />
             {submitted && !user.email &&
                         <div className="text-primary">Email is required</div>
             }
           </div>
           <div className="form-group mt-3">
             <label>Password</label>
-            <input type="password" name="password" value={user.password} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.password ? 'border-primary' : ''}`} />
+            <input placeholder='Password' type="password" name="password" value={user.password} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.password ? 'border-primary' : ''}`} />
             {submitted && !user.password &&
                         <div className="text-primary">password is required</div>
             }
           </div>
           <div className="form-group mt-3">
             <label>Password_confirmation</label>
-            <input type="password" name="password_confirmation" value={user.password_confirmation} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.password_confirmation ? 'border-primary' : ''}`} />
+            <input placeholder='Password confirmation' type="password" name="password_confirmation" value={user.password_confirmation} onChange={handleChange} className={`bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full ${submitted && !user.password_confirmation ? 'border-primary' : ''}`} />
             {submitted && !user.password_confirmation &&
                         <div className="text-primary">password confirmation is required</div>
             }
