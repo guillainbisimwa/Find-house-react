@@ -48,7 +48,7 @@ const Login = () => {
             <input type="password" name="password" value={password} onChange={handleChange} className="bg-gray-200 bg-opacity-10 focus:bg-white rounded-full form-control mb-2 w-full" placeholder="Enter your password"></input>
           </div>
           <div className='flex justify-center'>
-            <button className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded-full shadow focus:outline-none">
+            <button className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded-full shadow-2xl focus:outline-none">
               {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}
               Sign in
             </button>
