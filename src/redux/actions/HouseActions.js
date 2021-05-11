@@ -7,12 +7,12 @@ const getAllHouses = () => {
   const success = house => ({ type: Constants.GETALLHOUSES_SUCCESS, house });
   const failure = error => ({ type: Constants.GETALLHOUSES_FAILURE, error });
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch(request());
 
     userService.getAllHouses()
       .then(
-        (houses) => {
+        houses => {
           dispatch(success(houses));
         },
         error => dispatch(failure(error.toString())),
@@ -20,17 +20,17 @@ const getAllHouses = () => {
   };
 };
 
-const getAllFavorites = (id) => {
+const getAllFavorites = id => {
   const request = house => ({ type: Constants.GETALLFAVORITES_REQUEST, house });
   const success = house => ({ type: Constants.GETALLFAVORITES_SUCCESS, house });
   const failure = error => ({ type: Constants.GETALLFAVORITES_FAILURE, error });
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch(request());
 
     userService.getAllFavorites(id)
       .then(
-        (favorites) => {
+        favorites => {
           dispatch(success(favorites));
         },
         error => dispatch(failure(error.toString())),
@@ -43,12 +43,12 @@ const addToFavorites = (userId, houseId) => {
   const success = house => ({ type: Constants.ADDTOFAVORITES_SUCCESS, house });
   const failure = error => ({ type: Constants.ADDTOFAVORITES_FAILURE, error });
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch(request());
 
     userService.addToFavorites(userId, houseId)
       .then(
-        (favorites) => {
+        favorites => {
           history.push('/favorites');
           dispatch(success(favorites));
         },

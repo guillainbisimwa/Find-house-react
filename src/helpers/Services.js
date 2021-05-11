@@ -16,7 +16,7 @@ const login = async (name, password) => {
   let user = {};
 
   return axios.request(options)
-    .then((response) => {
+    .then(response => {
       user = response.data;
       user.name = name;
       localStorage.setItem('user', JSON.stringify(user));
@@ -33,7 +33,7 @@ const logout = async () => {
   };
 
   return axios.request(options)
-    .then((response) => {
+    .then(response => {
       // remove user from local storage to log user out
       localStorage.removeItem('user');
       history.push('/login');
@@ -43,7 +43,7 @@ const logout = async () => {
     .catch(error => error.response);
 };
 
-const register = async (user) => {
+const register = async user => {
   const options = {
     method: 'POST',
     url: 'https://find-your-house-backend.herokuapp.com/signup',
@@ -58,7 +58,7 @@ const register = async (user) => {
   };
 
   return axios.request(options)
-    .then((response) => {
+    .then(response => {
       const loggedUser = response.data;
       loggedUser.name = user.email;
 
@@ -80,7 +80,7 @@ const getAllHouses = async () => {
     .catch(error => error.response);
 };
 
-const getAllFavorites = async (user) => {
+const getAllFavorites = async user => {
   const options = {
     method: 'GET',
     url: `https://find-your-house-backend.herokuapp.com/users/${user}/favourites`,

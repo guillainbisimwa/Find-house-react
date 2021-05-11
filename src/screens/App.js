@@ -14,8 +14,8 @@ const App = () => {
   let myFavorites = [];
 
   if (houses.houses !== undefined && favorites.favorites !== undefined) {
-    myFavorites = houses.houses.filter(elm1 => favorites.favorites.map(elm =>
-      JSON.stringify(elm.house_id)).includes(JSON.stringify(elm1.id)));
+    // eslint-disable-next-line max-len
+    myFavorites = houses.houses.filter(elm1 => favorites.favorites.map(elm => JSON.stringify(elm.house_id)).includes(JSON.stringify(elm1.id)));
   }
 
   useEffect(() => {

@@ -1,12 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const PublicRoute = (RouteProps) => {
+const PublicRoute = RouteProps => {
   const { component: Component, restricted = false, ...rest } = RouteProps;
 
-  const render = (props) => {
+  const render = props => {
     if (localStorage.getItem('user') && restricted) {
-      return <Redirect to='/' />;
+      return <Redirect to="/" />;
     }
 
     return <Component {...props} />;

@@ -24,7 +24,7 @@ const MyRoutes = () => {
   }, []);
 
   return (
-    <div className='m-auto w-4/4 lg:w-3/4'>
+    <div className="m-auto w-4/4 lg:w-3/4">
       {
         alert
         && <div className={`alert ${alert.type}`}>{alert}</div>
