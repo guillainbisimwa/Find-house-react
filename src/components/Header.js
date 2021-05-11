@@ -51,7 +51,7 @@ const Header = ({ user }) => {
 };
 
 Header.propTypes = {
-  user: PropTypes.isRequired,
+  user: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default Header;

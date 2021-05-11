@@ -83,9 +83,9 @@ const Main = ({ userLogged, houses, myFavorites }) => {
 };
 
 Main.propTypes = {
-  userLogged: PropTypes.isRequired,
-  houses: PropTypes.isRequired,
-  myFavorites: PropTypes.isRequired,
+  userLogged: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  houses: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  myFavorites: PropTypes.oneOfType([PropTypes.array]).isRequired,
 };
 
 export default Main;

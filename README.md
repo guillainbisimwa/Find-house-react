@@ -1,9 +1,3 @@
----
-noteId: "47ae5bb0b27c11ebba7b4f70b852ed20"
-tags: []
-
----
-
 # Find-house-react
 
 > This is my Final Capstone Project made using react and redux and based on a find your house app project.
