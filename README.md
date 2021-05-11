@@ -4,7 +4,7 @@
 
 Find-house-react is a front-end app which will help you to retrieve house images and data from [Find-house-api](https://find-your-house-backend.herokuapp.com/), feel free to take a look at this awesome [documentation](http://gbisimwa.me/Find-house-api-doc/).
 
-<img src="./src/assets/img/screenshot.gif" alt="Screenshot" style="margin: auto; display: block">
+<img src="./src/assets/screenshot.gif" alt="Screenshot" style="margin: auto; display: block">
 
 ## Built With
 
