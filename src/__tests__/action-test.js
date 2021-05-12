@@ -35,6 +35,17 @@ const expectedHouseState = [
   },
 ];
 
+const expectedFavoriteState = [
+  {
+    id: 6,
+    name: 'name',
+    user_id: 1,
+    house_id: 1,
+    created_at: '2021-05-09',
+    updated_at: '2021-05-09',
+  },
+];
+
 const registerObject = {
   name: 'test',
   email: 'test@me.com',
@@ -72,6 +83,15 @@ const getAllHouseApiUrl = {
   },
 };
 
+const getFavoriteApiUrl = {
+  method: 'GET',
+  url: 'https://find-your-house-backend.herokuapp.com/users/3/favourites',
+  params: {},
+  headers: {
+    authorization: '********',
+  },
+};
+
 const successRegister = () => ({
   type: 'USERS_REGISTER_SUCCESS',
   user: expectedRegisterState,
@@ -85,6 +105,11 @@ const successLogin = () => ({
 const successHouses = () => ({
   type: 'GETALLHOUSES_SUCCESS',
   houses: expectedHouseState,
+});
+
+const successFavorite = () => ({
+  type: 'USER_GETALLFAVORITES_SUCCESS',
+  houses: expectedFavoriteState,
 });
 
 const fetchDataRegister = async () => dispatch => fetch(('https://find-your-house-backend.herokuapp.com/signup', {
@@ -103,10 +128,17 @@ const fetchDataLogin = async () => dispatch => fetch(('https://find-your-house-b
 
 const fetchDataHouse = async () => dispatch => fetch(('https://find-your-house-backend.herokuapp.com/houses', {
   data: registerObject,
-  method: 'POST',
+  method: 'GET',
   headers: { 'content-type': 'application/json', authorization: '********' },
 }))
   .then(() => dispatch(successHouses()));
+
+const fetchDataFavorite = async () => dispatch => fetch(('https://find-your-house-backend.herokuapp.com/users/3/favourites', {
+  data: registerObject,
+  method: 'GET',
+  headers: { 'content-type': 'application/json', authorization: '********' },
+}))
+  .then(() => dispatch(successFavorite()));
 
 describe('sign up', () => {
   beforeEach(() => {
@@ -215,5 +247,45 @@ describe('houses', () => {
   it('should not return the size of the object', async () => store.dispatch(fetchDataHouse)
     .then(() => {
       expect(store.getState().length).toEqual(2);
+    }));
+});
+
+describe('favorite houses', () => {
+  beforeEach(() => {
+    moxios.install();
+  });
+  afterEach(() => {
+    moxios.uninstall();
+  });
+
+  const store = mockStore(expectedFavoriteState);
+
+  it('Store is updated correctly', async () => {
+    moxios.wait(() => {
+      moxios.stubOnce('GET', getFavoriteApiUrl, {
+        status: 200,
+        response: expectedFavoriteState,
+      });
+    });
+
+    return store.dispatch(fetchDataFavorite).then(() => {
+      const newState = store.getState();
+      expect(Object.entries(newState)).toEqual(Object.entries(expectedFavoriteState));
+    });
+  });
+
+  it('should return an empty array', async () => store.dispatch(fetchDataFavorite)
+    .then(() => {
+      expect(store.getActions()).toEqual([]);
+    }));
+
+  it('should not return an empty array', async () => store.dispatch(fetchDataFavorite)
+    .then(() => {
+      expect(store.getState()).not.toEqual([]);
+    }));
+
+  it('should not return the size of the object', async () => store.dispatch(fetchDataFavorite)
+    .then(() => {
+      expect(store.getState().length).toEqual(1);
     }));
 });
