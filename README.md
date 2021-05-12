@@ -17,6 +17,12 @@ Find-house-react is a front-end app which will help you to retrieve house images
 - ES6
 - Tailwindcss
 
+## Tested With
+
+- Jest
+- redux-mock-store
+- moxios
+
 ## Live Demo
 
 [Live Demo Link](https://find-house-react.herokuapp.com/)
@@ -59,6 +65,14 @@ npm start
 
 ```
 
+### Test
+
+In order to test this project locally, just type this command:
+
+```s
+npm test
+
+
 ## Author
 
 👤 **Guillain Bisimwa**
@@ -85,3 +99,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](LICENSE) licensed.
+```
