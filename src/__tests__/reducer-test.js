@@ -1,5 +1,6 @@
 import authentication from '../redux/reducers/AuthentificationReducer';
 import house from '../redux/reducers/HouseReducer';
+import favorite from '../redux/reducers/FavoriteReducer';
 import registration from '../redux/reducers/RegistrationReducer';
 
 describe('AuthentificationReducer', () => {
@@ -56,6 +57,38 @@ describe('House Reducer', () => {
 
     it('should return an empty object when failure action is passed to it', () => {
       expect(house([], { type: 'USERS_GETALLHOUSES_FAILURE', house: { } })).toEqual({});
+    });
+  });
+
+  describe('Get All Favorite Houses Reducer', () => {
+    it('should return an empty object when nothing is passed to it', () => {
+      expect(favorite(undefined, {})).toEqual({});
+    });
+
+    it('should return an object (loading) when request action is passed to it', () => {
+      expect(favorite([], { type: 'USER_GETALLFAVORITES_REQUEST', favorite: { } })).toEqual({ loading: true });
+    });
+
+    it('should not return an object when success action is passed to it', () => {
+      expect(favorite([], { type: 'USER_GETALLFAVORITES_SUCCESS', favorite: { } })).not.toEqual({ favorites: { } });
+    });
+
+    it('should return an empty object when failure action is passed to it', () => {
+      expect(favorite([], { type: 'USER_GETALLFAVORITES_FAILURE', favorite: { } })).toEqual({});
+    });
+  });
+
+  describe('Post Favorite House Reducer', () => {
+    it('should return an object (loading) when request action is passed to it', () => {
+      expect(favorite([], { type: 'USER_ADDTOFAVORITES_REQUEST', favorite: { } })).toEqual({ loading: true });
+    });
+
+    it('should return an object when success action is passed to it', () => {
+      expect(favorite([], { type: 'USER_ADDTOFAVORITES_SUCCESS', favorite: { } })).toEqual({ favorites: { } });
+    });
+
+    it('should return an empty object when failure action is passed to it', () => {
+      expect(favorite([], { type: 'USER_ADDTOFAVORITES_FAILURE', favorite: { } })).toEqual({});
     });
   });
 });
