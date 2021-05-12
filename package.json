@@ -60,6 +60,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "postcss": "^7.0.35",
+    "react-test-renderer": "^17.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "20.0.x",
     "stylelint-csstree-validator": "^1.9.0",
