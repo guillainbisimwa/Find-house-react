@@ -72,6 +72,7 @@ In order to test this project locally, just type this command:
 ```s
 npm test
 
+```
 
 ## Author
 
@@ -99,4 +100,7 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](LICENSE) licensed.
+
+```
+
 ```
