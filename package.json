@@ -5,8 +5,6 @@
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@tailwindcss/forms": "^0.3.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
@@ -53,6 +51,8 @@
     "@babel/plugin-syntax-jsx": "^7.12.13",
     "@babel/preset-react": "^7.13.13",
     "@tailwindcss/postcss7-compat": "^2.1.0",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
