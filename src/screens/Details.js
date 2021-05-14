@@ -1,19 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import houseActions from '../redux/actions/HouseActions';
 
 const Details = () => {
-  const { id } = useParams();
+  const { id, favorite } = useParams();
+
   const dispatch = useDispatch();
   const userLogged = JSON.parse(localStorage.getItem('user'));
+
+  const addToFavorites = (houseId, e) => {
+    e.preventDefault();
+    dispatch(houseActions.addToFavorites(userLogged.id, houseId));
+  };
 
   const houses = useSelector(state => state.houseReducer);
   let myHouse = {};
 
   if (houses.houses !== undefined) {
     myHouse = houses.houses.find(house => house.id.toString() === id);
+    myHouse.favorite = favorite === 'true';
   }
 
   useEffect(() => {
@@ -72,7 +79,9 @@ const Details = () => {
             .
             <span className="block">{myHouse.details}</span>
           </div>
-          <span className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Added to favorite</span>
+          {!myHouse.favorite
+            ? <Link to="/favorites" onClick={e => addToFavorites(myHouse.id, e)} className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none">Add to favorites</Link>
+            : <span className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Added to favorite</span>}
         </div>
         )}
       </div>

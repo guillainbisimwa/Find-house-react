@@ -50,7 +50,7 @@ const Main = ({ userLogged, houses, myFavorites }) => {
           <div className="intro-y grid grid-cols-12 gap-6 mt-5 p-5">
             {houses.houses.map(house => (
               <div key={house.id} className="intro-y blog col-span-12 md:col-span-6 lg:col-span-4 shadow-2xl">
-                <Link to={`/details/${house.id}`} className="relative image-fit block">
+                <Link to={`/details/${house.id}/${checkIfFavorite(house.id)}`} className="relative image-fit block">
                   <img className="rounded-t-md" src={house.picture} alt={house.owner} />
                   <div className="absolute bottom-0 text-white px-5 pb-6 z-10">
                     <span className="px-2 py-1 rounded bg-primary font-bold">

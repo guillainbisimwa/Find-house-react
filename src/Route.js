@@ -33,7 +33,7 @@ const MyRoutes = () => {
           <PublicRoute restricted component={Signup} path="/register" exact />
           <PublicRoute restricted component={Login} path="/login" exact />
           <PrivateRoute component={App} path="/" exact />
-          <PrivateRoute component={Details} path="/details/:id" exact />
+          <PrivateRoute component={Details} path="/details/:id/:favorite" exact />
           <PrivateRoute component={Favorites} path="/favorites" exact />
           <Redirect from="*" to="/" />
         </Switch>

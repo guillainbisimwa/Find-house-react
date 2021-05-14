@@ -46,7 +46,7 @@ const Login = () => {
                         && <div className="text-primary">Password is required</div>}
           </div>
           <div className="flex justify-center">
-            <button type="button" className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded-full shadow-2xl focus:outline-none">
+            <button type="submit" className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded-full shadow-2xl focus:outline-none">
               {loggingIn && <span className="spinner-border spinner-border-sm mr-1" />}
               Sign in
             </button>
