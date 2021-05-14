@@ -26,7 +26,6 @@ const Details = () => {
   if (houses.houses !== undefined) {
     myHouse = houses.houses.find(house => house.id.toString() === id);
     myHouse.favorite = favorite === 'false' ? 0 : favorite;
-    console.log(myHouse);
   }
 
   useEffect(() => {
