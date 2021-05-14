@@ -15,11 +15,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // // reset login status
-  // useEffect(() => {
-  //   dispatch(userActions.logout());
-  // }, []);
-
   const handleChange = e => {
     const { name, value } = e.target;
     setInputs(inputs => ({ ...inputs, [name]: value }));

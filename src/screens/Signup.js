@@ -15,11 +15,6 @@ const Signup = () => {
   const registering = useSelector(state => state.registrationReducer.registering);
   const dispatch = useDispatch();
 
-  // reset login status
-  // useEffect(() => {
-  //   dispatch(userActions.logout());
-  // }, []);
-
   const handleChange = e => {
     const { name, value } = e.target;
     setUser(user => ({ ...user, [name]: value }));
