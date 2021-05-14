@@ -107,11 +107,24 @@ const addToFavorites = async (user, houseId) => {
     .catch(error => error.response);
 };
 
+const deleteFavorite = async (user, id) => {
+  const options = {
+    method: 'DELETE',
+    url: `https://find-your-house-backend.herokuapp.com/users/${user}/favourites/${id}`,
+    headers: authHeader(),
+  };
+
+  return axios.request(options)
+    .then(response => response)
+    .catch(error => error.response);
+};
+
 const userService = {
   login,
   logout,
   register,
   getAllHouses,
+  deleteFavorite,
   addToFavorites,
   getAllFavorites,
 };
