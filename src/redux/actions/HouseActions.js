@@ -57,10 +57,29 @@ const addToFavorites = (userId, houseId) => {
   };
 };
 
+const removeToFavorites = (userId, houseId) => {
+  const request = favorite => ({ type: Constants.REMOVEFAVORITE_REQUEST, favorite });
+  const success = favorite => ({ type: Constants.REMOVEFAVORITE_SUCCESS, favorite });
+  const failure = error => ({ type: Constants.REMOVEFAVORITE_FAILURE, error });
+
+  return dispatch => {
+    dispatch(request());
+
+    userService.deleteFavorite(userId, houseId)
+      .then(
+        favorites => {
+          dispatch(success(favorites));
+        },
+        error => dispatch(failure(error.toString())),
+      );
+  };
+};
+
 const houseActions = {
   getAllHouses,
-  getAllFavorites,
   addToFavorites,
+  getAllFavorites,
+  removeToFavorites,
 };
 
 export default houseActions;
