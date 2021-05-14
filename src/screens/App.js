@@ -16,6 +16,10 @@ const App = () => {
   if (houses.houses !== undefined && favorites.favorites !== undefined) {
     // eslint-disable-next-line max-len
     myFavorites = houses.houses.filter(elm1 => favorites.favorites.map(elm => JSON.stringify(elm.house_id)).includes(JSON.stringify(elm1.id)));
+    for (let index = 0; index < myFavorites.length; index += 1) {
+      const idFavorite = favorites.favorites.find(f => f.house_id === myFavorites[index].id);
+      myFavorites[index].id_favorite = idFavorite.id;
+    }
   }
 
   useEffect(() => {

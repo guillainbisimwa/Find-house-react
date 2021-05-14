@@ -15,12 +15,18 @@ const Details = () => {
     dispatch(houseActions.addToFavorites(userLogged.id, houseId));
   };
 
+  const removeFromFavorites = (favoriteId, e) => {
+    e.preventDefault();
+    dispatch(houseActions.removeFromFavorites(userLogged.id, favoriteId));
+  };
+
   const houses = useSelector(state => state.houseReducer);
   let myHouse = {};
 
   if (houses.houses !== undefined) {
     myHouse = houses.houses.find(house => house.id.toString() === id);
-    myHouse.favorite = favorite === 'true';
+    myHouse.favorite = favorite === 'false' ? 0 : favorite;
+    console.log(myHouse);
   }
 
   useEffect(() => {
@@ -79,9 +85,9 @@ const Details = () => {
             .
             <span className="block">{myHouse.details}</span>
           </div>
-          {!myHouse.favorite
+          {myHouse.favorite === 0
             ? <Link to="/favorites" onClick={e => addToFavorites(myHouse.id, e)} className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none">Add to favorites</Link>
-            : <span className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Added to favorite</span>}
+            : <Link to="/" onClick={e => removeFromFavorites(myHouse.favorite, e)} className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Remove from favorite</Link>}
         </div>
         )}
       </div>

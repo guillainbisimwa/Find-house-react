@@ -12,6 +12,11 @@ const Main = ({ userLogged, houses, myFavorites }) => {
     dispatch(houseActions.addToFavorites(userLogged.id, houseId));
   };
 
+  const removeFromFavorites = (favoriteId, e) => {
+    e.preventDefault();
+    dispatch(houseActions.removeFromFavorites(userLogged.id, favoriteId));
+  };
+
   const checkIfFavorite = id => {
     const found = myFavorites.some(item => item.id === id);
     return found;
@@ -50,7 +55,7 @@ const Main = ({ userLogged, houses, myFavorites }) => {
           <div className="intro-y grid grid-cols-12 gap-6 mt-5 p-5">
             {houses.houses.map(house => (
               <div key={house.id} className="intro-y blog col-span-12 md:col-span-6 lg:col-span-4 shadow-2xl">
-                <Link to={`/details/${house.id}/${checkIfFavorite(house.id)}`} className="relative image-fit block">
+                <Link to={`/details/${house.id}/${checkIfFavorite(house.id) ? house.id_favorite : false}/`} className="relative image-fit block">
                   <img className="rounded-t-md" src={house.picture} alt={house.owner} />
                   <div className="absolute bottom-0 text-white px-5 pb-6 z-10">
                     <span className="px-2 py-1 rounded bg-primary font-bold">
@@ -63,7 +68,7 @@ const Main = ({ userLogged, houses, myFavorites }) => {
                   </div>
                 </Link>
                 <div className="p-5 text-gray-700 dark:text-gray-600">
-                  Picture bys
+                  Picture by
                   {' '}
                   {house.owner}
                   .
@@ -71,7 +76,7 @@ const Main = ({ userLogged, houses, myFavorites }) => {
                 </div>
                 {!checkIfFavorite(house.id)
                   ? <Link to="/favorites" onClick={e => addToFavorites(house.id, e)} className="bg-primary py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none">Add to favorites</Link>
-                  : <span className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Added to favorite</span>}
+                  : <Link to="/" onClick={e => removeFromFavorites(house.id_favorite, e)} className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Remove from favorite</Link>}
               </div>
             ))}
           </div>

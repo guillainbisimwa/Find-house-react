@@ -115,7 +115,11 @@ const deleteFavorite = async (user, id) => {
   };
 
   return axios.request(options)
-    .then(response => response)
+    .then(response => {
+      console.log(user);
+      console.log(id);
+      console.log(response);
+    })
     .catch(error => error.response);
 };
 

@@ -57,7 +57,7 @@ const addToFavorites = (userId, houseId) => {
   };
 };
 
-const removeToFavorites = (userId, houseId) => {
+const removeFromFavorites = (userId, houseId) => {
   const request = favorite => ({ type: Constants.REMOVEFAVORITE_REQUEST, favorite });
   const success = favorite => ({ type: Constants.REMOVEFAVORITE_SUCCESS, favorite });
   const failure = error => ({ type: Constants.REMOVEFAVORITE_FAILURE, error });
@@ -68,6 +68,7 @@ const removeToFavorites = (userId, houseId) => {
     userService.deleteFavorite(userId, houseId)
       .then(
         favorites => {
+          history.push('/reset');
           dispatch(success(favorites));
         },
         error => dispatch(failure(error.toString())),
@@ -79,7 +80,7 @@ const houseActions = {
   getAllHouses,
   addToFavorites,
   getAllFavorites,
-  removeToFavorites,
+  removeFromFavorites,
 };
 
 export default houseActions;

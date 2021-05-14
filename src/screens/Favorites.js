@@ -16,7 +16,16 @@ const Favorites = () => {
   if (houses.houses !== undefined && favorites.favorites !== undefined) {
     // eslint-disable-next-line max-len
     myFavorites = houses.houses.filter(elm1 => favorites.favorites.map(elm => JSON.stringify(elm.house_id)).includes(JSON.stringify(elm1.id)));
+    for (let index = 0; index < myFavorites.length; index += 1) {
+      const idFavorite = favorites.favorites.find(f => f.house_id === myFavorites[index].id);
+      myFavorites[index].id_favorite = idFavorite.id;
+    }
   }
+
+  const removeFromFavorites = (favoriteId, e) => {
+    e.preventDefault();
+    dispatch(houseActions.removeFromFavorites(userLogged.id, favoriteId));
+  };
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -83,7 +92,7 @@ const Favorites = () => {
                   .
                   <span className="block truncate ...">{house.details}</span>
                 </div>
-                <span className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Added to favorite</span>
+                <Link to="/" onClick={e => removeFromFavorites(house.id_favorite, e)} className="bg-black bg-opacity-40 py-3 mt-3 px-6 text-white block font-semibold rounded focus:outline-none block">Remove from favorite</Link>
               </div>
             ))}
           </div>
