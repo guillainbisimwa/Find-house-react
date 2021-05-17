@@ -25,7 +25,7 @@ Find-house-react is a front-end app which will help you to retrieve house images
 
 ## Live Demo
 
-[Live Demo Link](https://find-house-react.herokuapp.com/)
+[Live Demo Link](https://find-house.netlify.app/)
 
 ## Getting Started
 
