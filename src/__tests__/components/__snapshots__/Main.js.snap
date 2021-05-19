@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main component should match snapshot 1`] = `
+Array [
+  <div>
+    <div
+      className="col-lg-8 offset-lg-2"
+    >
+      <p />
+    </div>
+  </div>,
+  ",",
+]
+`;

@@ -26,6 +26,18 @@ const favorite = (state = {}, action) => {
       return {
         error: action.error,
       };
+    case Constants.REMOVEFAVORITE_REQUEST:
+      return {
+        loading: true,
+      };
+    case Constants.REMOVEFAVORITE_SUCCESS:
+      return {
+        favorite: action.favorite,
+      };
+    case Constants.REMOVEFAVORITE_FAILURE:
+      return {
+        error: action.error,
+      };
     default:
       return state;
   }

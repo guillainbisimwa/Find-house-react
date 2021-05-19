@@ -1,14 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import authentication from './AuthentificationReducer';
 import notification from './NotificationReducer';
 import registration from './RegistrationReducer';
 import house from './HouseReducer';
 import favorite from './FavoriteReducer';
-
-const loggerMiddleware = createLogger();
 
 const mainReducer = combineReducers({
   authenticationReducer: authentication,
@@ -18,6 +15,6 @@ const mainReducer = combineReducers({
   favoriteReducer: favorite,
 });
 
-const store = createStore(mainReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
+const store = createStore(mainReducer, applyMiddleware(thunk));
 
 export default store;
